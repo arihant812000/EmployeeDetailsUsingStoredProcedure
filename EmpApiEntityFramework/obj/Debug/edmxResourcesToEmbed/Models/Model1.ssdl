@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="employeedatainfoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeAddresses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Address_type" Type="nvarchar(max)" />
+    <Property Name="House_number" Type="nvarchar(max)" />
+    <Property Name="Street" Type="nvarchar(max)" />
+    <Property Name="City" Type="nvarchar(max)" />
+    <Property Name="State" Type="nvarchar(max)" />
+    <Property Name="Country" Type="nvarchar(max)" />
+    <Property Name="Pin_Code" Type="int" Nullable="false" />
+    <Property Name="Landmark" Type="nvarchar(max)" />
+    <Property Name="Empid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employeeDetails">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_Name" Type="nvarchar(max)" />
+    <Property Name="Last_Name" Type="nvarchar(max)" />
+    <Property Name="Date_of_Birth" Type="nvarchar(max)" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Phone_No" Type="nvarchar(max)" />
+    <Property Name="Department" Type="nvarchar(max)" />
+    <Property Name="Job_Role" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_dbo_EmployeeAddresses_dbo_employeeDetails_Empid">
+    <End Role="employeeDetails" Type="Self.employeeDetails" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmployeeAddresses" Type="Self.EmployeeAddresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employeeDetails">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="EmployeeAddresses">
+        <PropertyRef Name="Empid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AddEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="employee" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="deleteEmp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EditEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="employee" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="getAdress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="employeedatainfoModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeAddresses" EntityType="Self.EmployeeAddresses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employeeDetails" EntityType="Self.employeeDetails" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_EmployeeAddresses_dbo_employeeDetails_Empid" Association="Self.FK_dbo_EmployeeAddresses_dbo_employeeDetails_Empid">
+      <End Role="employeeDetails" EntitySet="employeeDetails" />
+      <End Role="EmployeeAddresses" EntitySet="EmployeeAddresses" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

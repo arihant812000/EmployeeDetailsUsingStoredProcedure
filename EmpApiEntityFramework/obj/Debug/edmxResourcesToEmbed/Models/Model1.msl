@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="employeedatainfoModelStoreContainer" CdmEntityContainer="employeedatainfoEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="employeedatainfoModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeAddresses">
+      <EntityTypeMapping TypeName="employeedatainfoModel.EmployeeAddress">
+        <MappingFragment StoreEntitySet="EmployeeAddresses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Address_type" ColumnName="Address_type" />
+          <ScalarProperty Name="House_number" ColumnName="House_number" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Pin_Code" ColumnName="Pin_Code" />
+          <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employeeDetails">
+      <EntityTypeMapping TypeName="employeedatainfoModel.employeeDetail">
+        <MappingFragment StoreEntitySet="employeeDetails">
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Date_of_Birth" ColumnName="Date_of_Birth" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_No" ColumnName="Phone_No" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Job_Role" ColumnName="Job_Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddEmployee" FunctionName="employeedatainfoModel.Store.AddEmployee" />
+    <FunctionImportMapping FunctionImportName="deleteEmp" FunctionName="employeedatainfoModel.Store.deleteEmp" />
+    <FunctionImportMapping FunctionImportName="EditEmployee" FunctionName="employeedatainfoModel.Store.EditEmployee" />
+    <FunctionImportMapping FunctionImportName="getAdress" FunctionName="employeedatainfoModel.Store.getAdress" />
+    <FunctionImportMapping FunctionImportName="getAll" FunctionName="employeedatainfoModel.Store.getAll" />
+  </EntityContainerMapping>
+</Mapping>
